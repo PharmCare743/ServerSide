@@ -5,15 +5,24 @@ import { ValidationPipe } from '@nestjs/common';
 import * as dotenv from 'dotenv';
 import * as express from 'express'
 import { join } from 'path'
+var path = require("path");
+import * as https from 'https';
+import * as fs from 'fs';
 dotenv.config();
 // to get rid of event listener related memory leaks
 require('events').EventEmitter.defaultMaxListeners = 0;
 
+
 const connectMongoDB = require('./helperfunction/db');
+const httpsOptions = {
+  key: fs.readFileSync("./src/ssl/pharmascare.key"),
+  cert: fs.readFileSync('./src/ssl/pharmascare_certificate.crt'),
+};
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     cors: true,
+    httpsOptions
     
   });
   connectMongoDB();
