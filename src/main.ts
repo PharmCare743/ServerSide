@@ -14,15 +14,15 @@ require('events').EventEmitter.defaultMaxListeners = 0;
 
 
 const connectMongoDB = require('./helperfunction/db');
-const httpsOptions = {
-  key: fs.readFileSync("./src/ssl/pharmascare.key"),
-  cert: fs.readFileSync('./src/ssl/pharmascare_certificate.crt'),
-};
-
 // const httpsOptions = {
-//   key: fs.readFileSync('/etc/letsencrypt/live/pharmascare.com/privkey.pem'),
-//   cert: fs.readFileSync('/etc/letsencrypt/live/pharmascare.com/fullchain.pem'),
+//   key: fs.readFileSync("./src/ssl/pharmascare.key"),
+//   cert: fs.readFileSync('./src/ssl/pharmascare_certificate.crt'),
 // };
+
+const httpsOptions = {
+  key: fs.readFileSync('/etc/letsencrypt/live/pharmascare.com/privkey.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/live/pharmascare.com/fullchain.pem'),
+};
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
