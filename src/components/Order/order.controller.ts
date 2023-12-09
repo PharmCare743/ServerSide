@@ -13,7 +13,7 @@ import {
   } from '@nestjs/common';
 
   import { OrderService } from './order.service';
-import { AddOrderDTO } from './order.dto';
+import { AddOrderDTO, GetOrderDTO, UpdateStatus } from './order.dto';
   @Controller('order')
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
@@ -28,4 +28,24 @@ export class OrderController {
       });
     
   }
+  @Put('/update-status')
+  async updateStatus(@Body() obj:UpdateStatus, @Response() res, @Request() req) {
+   
+      const response = await this.orderService.updateStatus(obj);
+      return res.status(HttpStatus.OK).json({
+        ...response
+      });
+    
+  }
+
+  @Get('/by-paginate')
+  async getAllPrescriptionByPaginate(@Query() obj:GetOrderDTO, @Response() res, @Request() req) {
+   
+      const response = await this.orderService.getAllByPaginate(obj);
+      return res.status(HttpStatus.OK).json({
+        ...response
+      });
+    
+  }
+
 }

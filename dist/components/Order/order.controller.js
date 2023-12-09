@@ -26,6 +26,18 @@ let OrderController = exports.OrderController = class OrderController {
             ...response
         });
     }
+    async updateStatus(obj, res, req) {
+        const response = await this.orderService.updateStatus(obj);
+        return res.status(common_1.HttpStatus.OK).json({
+            ...response
+        });
+    }
+    async getAllPrescriptionByPaginate(obj, res, req) {
+        const response = await this.orderService.getAllByPaginate(obj);
+        return res.status(common_1.HttpStatus.OK).json({
+            ...response
+        });
+    }
 };
 __decorate([
     (0, common_1.Post)('/'),
@@ -36,6 +48,24 @@ __decorate([
     __metadata("design:paramtypes", [order_dto_1.AddOrderDTO, Object, Object]),
     __metadata("design:returntype", Promise)
 ], OrderController.prototype, "add", null);
+__decorate([
+    (0, common_1.Put)('/update-status'),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Response)()),
+    __param(2, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [order_dto_1.UpdateStatus, Object, Object]),
+    __metadata("design:returntype", Promise)
+], OrderController.prototype, "updateStatus", null);
+__decorate([
+    (0, common_1.Get)('/by-paginate'),
+    __param(0, (0, common_1.Query)()),
+    __param(1, (0, common_1.Response)()),
+    __param(2, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [order_dto_1.GetOrderDTO, Object, Object]),
+    __metadata("design:returntype", Promise)
+], OrderController.prototype, "getAllPrescriptionByPaginate", null);
 exports.OrderController = OrderController = __decorate([
     (0, common_1.Controller)('order'),
     __metadata("design:paramtypes", [order_service_1.OrderService])
