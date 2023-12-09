@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddOrderDTO = void 0;
+exports.UpdateStatus = exports.GetOrderDTO = exports.AddOrderDTO = void 0;
 const class_validator_1 = require("class-validator");
 class AddOrderDTO {
 }
@@ -44,4 +44,35 @@ __decorate([
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
 ], AddOrderDTO.prototype, "total_price", void 0);
+class GetOrderDTO {
+}
+exports.GetOrderDTO = GetOrderDTO;
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], GetOrderDTO.prototype, "status", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], GetOrderDTO.prototype, "page_number", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], GetOrderDTO.prototype, "page_size", void 0);
+class UpdateStatus {
+}
+exports.UpdateStatus = UpdateStatus;
+__decorate([
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], UpdateStatus.prototype, "_id", void 0);
+__decorate([
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], UpdateStatus.prototype, "status", void 0);
 //# sourceMappingURL=order.dto.js.map

@@ -7,12 +7,18 @@ const common_1 = require("@nestjs/common");
 const dotenv = require("dotenv");
 const express = require("express");
 const path_1 = require("path");
+const fs = require("fs");
 dotenv.config();
 require('events').EventEmitter.defaultMaxListeners = 0;
 const connectMongoDB = require('./helperfunction/db');
+const httpsOptions = {
+    key: fs.readFileSync('/etc/letsencrypt/live/pharmascare.com/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/pharmascare.com/fullchain.pem'),
+};
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule, {
         cors: true,
+        httpsOptions
     });
     connectMongoDB();
     app.use((0, express_1.json)({ limit: '500mb' }));

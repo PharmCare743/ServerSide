@@ -6,3 +6,12 @@ export declare class AddOrderDTO {
     order_detail: Array<object>;
     total_price: number;
 }
+export declare class GetOrderDTO {
+    status: string;
+    page_number: string;
+    page_size: string;
+}
+export declare class UpdateStatus {
+    _id: string;
+    status: string;
+}

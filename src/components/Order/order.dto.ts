@@ -39,3 +39,32 @@ export class AddOrderDTO{
     @IsNumber()
     total_price:number
 }
+
+export class GetOrderDTO{
+  @IsOptional()
+  @IsString()
+  status:string
+
+  @IsOptional()
+  @IsString()
+  page_number:string
+
+
+  @IsOptional()
+  @IsString()
+  page_size:string
+
+}
+
+export class UpdateStatus{
+  @IsNotEmpty()
+  @IsString()
+  _id:string
+
+
+  @IsNotEmpty()
+  @IsString()
+  status:string
+
+
+}
