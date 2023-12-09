@@ -7,22 +7,13 @@ const common_1 = require("@nestjs/common");
 const dotenv = require("dotenv");
 const express = require("express");
 const path_1 = require("path");
-<<<<<<< HEAD
-var path = require("path");
-=======
->>>>>>> 6b12b9e5dc5ea685df0dd123fa1c0b056a6eeba8
 const fs = require("fs");
 dotenv.config();
 require('events').EventEmitter.defaultMaxListeners = 0;
 const connectMongoDB = require('./helperfunction/db');
 const httpsOptions = {
-<<<<<<< HEAD
-    key: fs.readFileSync("./src/ssl/pharmascare.key"),
-    cert: fs.readFileSync('./src/ssl/pharmascare_certificate.crt'),
-=======
     key: fs.readFileSync('/etc/letsencrypt/live/pharmascare.com/privkey.pem'),
     cert: fs.readFileSync('/etc/letsencrypt/live/pharmascare.com/fullchain.pem'),
->>>>>>> 6b12b9e5dc5ea685df0dd123fa1c0b056a6eeba8
 };
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule, {
